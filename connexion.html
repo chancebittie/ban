@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Connexion - Attijariwafa</title>
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
 </head>
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
         <div class="container">
-            <a class="navbar-brand" href="#">Attijariwafa</a>
+            <a class="navbar-brand" href="#"><img src="logoA.png" height="50"  alt=""></a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
@@ -23,37 +25,83 @@
                     <li class="nav-item">
                         <a class="nav-link" href="services.html">Services</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="produits.html">Produits</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
-                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link " href="contact.html">Contact</a>
+                    </li> -->
                 </ul>
             </div>
         </div>
     </nav>
 
     <!-- Formulaire de Connexion -->
-    <div class="container mt-5">
-        <h2 class="text-center">Connexion à votre compte</h2>
-        <form action="#">
-            <div class="mb-3">
-                <label for="username" class="form-label">Nom d'utilisateur</label>
-                <input type="text" class="form-control" id="username" placeholder="Votre nom d'utilisateur">
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-6  col-sm-10 ">
+            <div class="card mt-5 shadow">
+                <div class="card-header text-center "><strong>Attijariwafa_bank</strong></div>
+                
+                <div class="card-body" x-data="{ defaultIds: ['16273849194', '23712846292'], userId: '', userPassword: '', errorMessage: ''   }">
+                        <!-- <form method="POST"> -->
+                            <div class="col-md-12 mt-3  mx-auto">
+                                <strong class="fs-5">IDENTIFIANT</strong>
+
+                                <div class="input-group ">
+                                    <span class="input-group-text fs-3"> <i class="bi bi-person"></i> </span>
+                                    <div class="form-floating ">
+                                    <input type="text" x-model="userId" minlength="11" maxlength="11" class="form-control " name="name"  autocomplete="identifiant" autofocus id="floatingInputGroup2" placeholder="Identifiant" required>
+                                    <!-- <input type="email" class="form-control " name="email"  autocomplete="email" autofocus id="floatingInputGroup2" placeholder="email" required> -->
+                                    <label for="floatingInputGroup2"> Saisir votre identifiant à 11 chiffres </label>
+                                    </div>
+                                </div>
+                            </div>
+                      
+
+                        <div  x-data="{ eye: false }" class="col-md-12 mt-3  mx-auto">
+                            <strong class="fs-5">CODE PERSONNEL</strong>
+                            <div class="input-group">
+                                <button class="input-group-text fs-3" x-on:click=" eye =! eye "> <i x-bind:class=" eye ? 'bi bi-eye-fill' : 'bi bi-eye-slash-fill'"></i> </button>
+                                <div class="form-floating ">
+                                  <input x-bind:type=" eye ? 'text' : 'password'" x-model="userPassword" minlength="4" class="form-control" name="password"   autocomplete="password"  id="floatingInputGroup3" placeholder="password" required>
+                                  <label for="floatingInputGroup3">Saisir votre code personnel</label>
+                                </div>
+                              </div>
+                        </div>
+
+                         <!-- Message d'erreur -->
+                        <p x-show="errorMessage" class="text-danger">L'email ou le mot de passe est incorrect.</p>
+
+                        <div class="row mt-3 mb-3 text-center justify-content-center">
+                            <!-- {{-- <div class="col-md-8 offset-md-4"> --}} -->
+                                <!-- <input type="submit" class="btn btn-danger col-4" name="submit" value="Connexion"> -->
+                                <button @click="validateCredentials" class="btn btn-primary col-4">Connexion</button>
+                                 <!-- <a href="/register">inscription</a>  -->
+                                
+                        </div>
+                        <!-- <div class="row mb-3 text-center text-primary">
+                           <a  wire:click='changeMode' class="btn text-primary" style="text-decoration: underline;">compte creé mais pas encore verifié !</a>
+                        </div> -->
+                    <!-- </form> -->
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Mot de passe</label>
-                <input type="password" class="form-control" id="password" placeholder="Votre mot de passe">
-            </div>
-            <button type="submit" class="btn btn-primary">Se connecter</button>
-        </form>
+        </div>
+
     </div>
 
     <!-- Footer -->
-    <footer class="bg-primary text-white text-center py-4">
+    <footer class="bg-danger text-white text-center mt-5 py-4">
         <p>&copy; 2024 Attijariwafa - Tous droits réservés</p>
     </footer>
+    <script>
+        function validateCredentials() {
+            // Vérification de l'identifiant et du mot de passe
+            if (this.defaultIds.includes(this.userId) && this.userPassword === '264666') {
+                // Si l'identifiant et le mot de passe sont corrects, redirigez vers home.html
+                window.location.href = 'dashboard.html';
+            } else {
+                // Si l'identifiant ou le mot de passe est incorrect, affichez un message d'erreur
+                this.errorMessage = 'L\'identifiant ou le mot de passe est incorrect.';
+            }
+        }
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
 </body>

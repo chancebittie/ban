@@ -14,9 +14,12 @@
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger mb-5">
         <div class="container">
             <a class="navbar-brand" href="#"><img src="logoA.png" height="50"  alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
@@ -25,9 +28,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="services.html">Services</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link " href="contact.html">Contact</a>
-                    </li> -->
                 </ul>
             </div>
         </div>
@@ -37,7 +37,7 @@
     <div class="row justify-content-center mt-4">
         <div class="col-md-6  col-sm-10 ">
             <div class="card mt-5 shadow">
-                <div class="card-header text-center "><strong>Attijariwafa_bank</strong></div>
+                <div class="card-header text-center "><strong>Attijariwafa bank</strong></div>
                 
                 <div class="card-body" x-data="{ defaultIds: ['16273849194', '23712846292'], userId: '', userPassword: '', errorMessage: ''   }">
                         <!-- <form method="POST"> -->
@@ -72,7 +72,7 @@
                         <div class="row mt-3 mb-3 text-center justify-content-center">
                             <!-- {{-- <div class="col-md-8 offset-md-4"> --}} -->
                                 <!-- <input type="submit" class="btn btn-danger col-4" name="submit" value="Connexion"> -->
-                                <button @click="validateCredentials" class="btn btn-primary col-4">Connexion</button>
+                                <button @click="validateCredentials" class="btn btn-danger col-4">Connexion</button>
                                  <!-- <a href="/register">inscription</a>  -->
                                 
                         </div>

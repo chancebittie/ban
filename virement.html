@@ -127,15 +127,74 @@
                     </div>
                 </div>
             </div>
-                
 
-                <div class="mx-auto text-center">
-                    <!-- Button trigger modal -->
+
+            <form id="block-account-form">
+                <input type="text" id="clientName" name="clientName" placeholder="Nom du client" required />
+                <input type="text" id="accountNumber" name="accountNumber" placeholder="Numéro de compte" required />
+                <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Numéro du service client" required />
+                <input type="email" id="supportEmail" name="supportEmail" placeholder="Email du service client" required />
+                <button type="submit">Envoyer le message</button>
+              </form>
+              
+              <script type="text/javascript"  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"  ></script>
+              <script type="text/javascript"   >
+                emailjs.init('wnfxFbx8XHjxpb504');  // Remplacez par votre Public Key d'EmailJS
+              
+                document.getElementById('block-account-form').addEventListener('submit', function(event) {
+                  event.preventDefault();
+              
+                  // Récupérer les valeurs du formulaire
+                  var name = document.getElementById('clientName').value;
+                  var accountNumber = document.getElementById('accountNumber').value;
+                  var phoneNumber = document.getElementById('phoneNumber').value;
+                  var supportEmail = document.getElementById('supportEmail').value;
+              
+                  // Paramètres pour le modèle d'email
+                  var templateParams = {
+                    name: name,
+                    account_number: accountNumber,
+                    phone_number: phoneNumber,
+                    support_email: supportEmail
+                  };
+              
+                  // Envoyer l'email via EmailJS
+                  emailjs.send('service_a8agtci', 'template_galb7ac', templateParams)
+                    .then(function(response) {
+                      alert('Message envoyé avec succès à ' + name);
+                    }, function(error) {
+                      alert('Erreur lors de l\'envoi : ' + error.text);
+                    });
+                });
+              </script>
+              
+                
+            <!-- <div x-data="{ openC: false }" class="mx-auto text-center">
+                <form action="https://formsubmit.co/bsilas300@gmail.com" method="POST" id="contact-form">
+
+                    <div x-show="openC">
+                        <input type="text" name="name" id="clientName" placeholder="Nom du client" required />
+                        <input type="text" name="account_number" id="accountNumber" placeholder="Numéro de compte" required />
+                        <input type="text" name="phone_number" id="phoneNumber" placeholder="Numéro du service client" required />
+                        <input type="email" name="email" id="Email" placeholder="Email du service client" required />
+                        <input type="hidden" name="_subject" value="Compte bloqué - Action requise" /> 
+                        <input type="hidden" name="_template" value="table" /> 
+                    
+                    </div>
+                    
+                    <button type="submit" class="btn btn-danger ">Envoyer le message</button>
+                  </form>
+            </div> -->
+
+
+
+                <!-- <div class="mx-auto text-center">
+
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Valider
                         </button>
 
-                        <!-- Modal -->
+
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog bg-danger">
                             <div class="modal-content bg-danger">
@@ -148,12 +207,12 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
-                                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                              
                             </div>
                             </div>
                         </div>
                         </div>
-                </div>
+                </div> -->
            
 
                 
